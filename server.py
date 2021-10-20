@@ -48,6 +48,7 @@ def weather():
 
     zipcode = request.args.get('zipcode')
     weather_info = WEATHER.get(zipcode, DEFAULT_WEATHER)
+    
     return jsonify(weather_info)
 
 
