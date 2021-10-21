@@ -31,8 +31,38 @@ function showWeather(evt) {
 $('#weather-form').on('submit', showWeather);
 
 // PART 3: ORDER MELONS
+// 
+// function orderMelons(evt) {
+//   evt.preventDefault();
 
-function orderMelons(evt) {
+//   const formData = {
+//     //keys here need to be the "name" in the html inputs, can't just make up variables
+//     qty: $('#qty-field').val(),
+//     melon_type: $('#melon-type-field').val(),
+//   };
+
+//   $.post('/order-melons.json', formData, resp =>{
+    
+//     if (resp.code === 'ERROR'){
+//       $('#order-status').addClass('order-error');
+//       $('#order-status').text(resp.msg);
+//     }
+//     else{
+//       // Need to use removeClass, otherwise, correct qty would still resulted in in red.
+//       $('#order-status').removeClass('order-error');
+//       $('#order-status').text(resp.msg);
+//     }
+//   }); 
+
+//   // TODO: show the result message after your form
+//   // TODO: if the result code is ERROR, make it show up in red (see our CSS!)
+  
+// }
+
+// $('#order-form').on('submit', orderMelons);
+
+
+$('#order-form').on('submit', evt => {
   evt.preventDefault();
 
   const formData = {
@@ -53,10 +83,7 @@ function orderMelons(evt) {
       $('#order-status').text(resp.msg);
     }
   }); 
-
-  // TODO: show the result message after your form
-  // TODO: if the result code is ERROR, make it show up in red (see our CSS!)
   
-}
+});
 
-$('#order-form').on('submit', orderMelons);
+// $('#order-form').on('submit', orderMelons);
