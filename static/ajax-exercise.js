@@ -29,11 +29,11 @@ $('#weather-form').on('submit',  evt => {
   });
 });
 
-$('#weather-form').on('submit', showWeather);
+//$('#weather-form').on('submit', showWeather);
 
 // PART 3: ORDER MELONS
-// 
-// function orderMelons(evt) {
+
+// $('#order-form').on('submit', evt => {
 //   evt.preventDefault();
 
 //   const formData = {
@@ -55,24 +55,14 @@ $('#weather-form').on('submit', showWeather);
 //     }
 //   }); 
 
-//   // TODO: show the result message after your form
-//   // TODO: if the result code is ERROR, make it show up in red (see our CSS!)
-  
-// }
-
-// $('#order-form').on('submit', orderMelons);
+// });
 
 
 $('#order-form').on('submit', evt => {
   evt.preventDefault();
-
-  const formData = {
-    //keys here need to be the "name" in the html inputs, can't just make up variables
-    qty: $('#qty-field').val(),
-    melon_type: $('#melon-type-field').val(),
-  };
-
-  $.post('/order-melons.json', formData, resp =>{
+  // Instead of creating the formData manually, call serialize to do the works
+  const formData = $('#order-form').serialize();
+  $.post('/order-melons.json', formData, resp => {
     
     if (resp.code === 'ERROR'){
       $('#order-status').addClass('order-error');
@@ -84,7 +74,5 @@ $('#order-form').on('submit', evt => {
       $('#order-status').text(resp.msg);
     }
   }); 
-  
-});
 
-// $('#order-form').on('submit', orderMelons);
+});
